@@ -4,9 +4,30 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const Home = () => {
 
-    const Item = (title) => {
+    const DATA = [
+        {
+            id: 1,
+            title: 'First Item',
+            icon: '../image/bus.png'
+        },
+        {
+            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+            title: 'Second Item',
+            icon: '../image/bus.png'
+        },
+        {
+            id: '58694a0f-3da1-471f-bd96-145571e29d72',
+            title: 'Third Item',
+            icon: '../image/bus.png'
+        },
+    ];
+
+    const Item = ({ title, icon }) => {
         return (
             <View style={styles.item}>
+                <View style={{ backgroundColor: '#60bf67', width: 40, height: 40, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
+                    <Image source={require('../image/bus.png')} style={{ width: 24, height: 24 }} />
+                </View>
                 <Text style={styles.title}>{title}</Text>
             </View>
         );
@@ -54,6 +75,20 @@ const Home = () => {
 
 
                 </SafeAreaView>
+                <View style={{ backgroundColor: '#ffffff', height: '100%', marginTop: 30, borderRadius: 40, padding: 40 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <Text style={{ fontSize: 23, color: '#030040', fontWeight: 'bold' }}>거래 내역</Text>
+                        <View style={{ backgroundColor: '#ebeeff', borderRadius: 8, padding: 10 }}>
+                            <Text style={{ color: '#5e76ff', fontWeight: 'bold' }}>See All</Text>
+                        </View>
+                    </View>
+                    <FlatList
+                        data={DATA}
+                        renderItem={({ item }) => <Item title={item.title} icon={item.icon} />}
+                        keyExtractor={item => item.id}
+                    />
+
+                </View>
             </View>
         </View >
     );
@@ -81,6 +116,10 @@ const styles = StyleSheet.create({
     },
     bodyContainer: {
 
+    },
+    item: {
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });
 
