@@ -25,10 +25,21 @@ const Home = () => {
     const Item = ({ title, icon }) => {
         return (
             <View style={styles.item}>
-                <View style={{ backgroundColor: '#60bf67', width: 40, height: 40, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
-                    <Image source={require('../image/bus.png')} style={{ width: 24, height: 24 }} />
+                <View style={{ flexDirection: 'row', }}>
+                    <View style={{ backgroundColor: '#60bf67', width: 40, height: 40, borderRadius: 100, justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                        <Image source={require('../image/bus.png')} style={{ width: 24, height: 24 }} />
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View>
+                            <Text style={{ color: '#030040', fontWeight: 'bold' }}>{title}</Text>
+                            <Text style={{ color: '#030040', opacity: 0.3, fontWeight: 'bold' }}>2020.04.21</Text>
+                        </View>
+
+                    </View>
                 </View>
-                <Text style={styles.title}>{title}</Text>
+                <View>
+                    <Text style={{ fontSize: 16, color: '#030040', fontWeight: 'bold' }}>300 GTK</Text>
+                </View>
             </View>
         );
     }
@@ -119,7 +130,9 @@ const styles = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 20,
+        justifyContent: 'space-between'
     }
 });
 
